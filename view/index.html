@@ -1,0 +1,22 @@
+{{extend ("./layout/layout")}}
+
+{{#block ("head")}}
+
+    </style>
+    <script type="text/javascript">
+        function query(){
+            $.ajax({
+                url:"/query",
+                type:"GET",
+                success: function (res) {
+                    $("#result").val(JSON.stringify(res));
+                }
+            });
+        }
+     </script>
+{{/block}}
+
+{{#block ("body")}}
+<button id="query" onclick="query()">获取数据</button><br/>
+获取的数据结果（JSON字符串）：<textarea id="result" style="height:100px;width:200px;" ></textarea>
+{{/block}}

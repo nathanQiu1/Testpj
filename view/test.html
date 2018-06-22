@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+	 <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+ <script src="../../js/GetInfo.js"></script>
+  
+    
+
+    <title></title>
+    <script type="text/javascript">
+    
+
+        function query(){
+            $.ajax({
+                url:"/query",
+                type:"GET",
+                success: function (res) {
+                    $("#result").val(JSON.stringify(res));
+                }
+            });
+		
+        }
+    </script>
+	
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div id="leftHead"><img src="../../img/logo.PNG" alt="" /></div>
+   <div id="rightHead" align="center" class="style1"><br /><strong>捷普绿点科技（深圳）有限公司季刊列表</strong><br /></div>
+     <div>
+        <table id="headtable" class="table table-hover" style=" width:100%">
+         
+            <tr style=" background-color:#15428b">
+                <th  style="width:5%"><span class="sp_litter">   ID   </span></th >
+                <th   style="width:10%"><span class="sp_litter">阅    读</span></th >
+                <th   style="width:25%"><span class="sp_litter">封    面</span></th >
+                <th   style="width:15%"><span class="sp_litter">阅阅人数</span></th >
+                <th   style="width:15%"><span class="sp_litter">点阅次数</span></th >
+                <th   style="width:15%"><span class="sp_litter">阅刊名称</span></th >
+                <th  style="width:15%"><span class="sp_litter">发布时间</span></th >
+          
+            </tr>
+        </table>
+      <div id="mainx" class="main" style=" width:100%;text-align:center;">
+
+      </div>
+    </div>
+
+ 
+
+ 
+
+  
+ 
+  
+
+</body>
+</html>

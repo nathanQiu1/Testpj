@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+         <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/xeditable.min.css" rel="stylesheet" type="text/css" />
+    <script src="../../js/angular.min.js"></script>
+    <script src="../../js/xeditable.min.js"></script>
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+  <script src="../../js/List.js"></script>
+    <title></title>
+</head>
+<body  ng-app="mylist" ng-controller="listCtrl">
+
+
+
+<h3>电子季刊编辑</h3>
+
+<table  class="table table-bordered table-hover table-condensed">
+  <thead>
+    <tr style="font-weight: bold">
+      <td style="width:15%" >阅刊名称</td>
+      <td style="width:10%">阅刊路径</td>
+      <td style="width:10%">图片路径</td>
+      <td style="width:15%">创建时间</td>
+      <td style="width:5%">点阅人数</td>
+      <td style="width:5%">点击次数</td>
+      <td style="width:20%">备注</td>
+      <td style="width:10%">状态</td>
+ <td style="width:10%">编辑</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="Em_book in Em_books">
+      <td>
+       <span editable-text="Em_book.Name" e-name="Name" onbeforesave="checkName($data)"  e-form="rowform"  >
+         <!--<p ng-bind="Em_book.Name"></p>--> {{Em_book.Name}}
+        </span>
+      </td>
+  
+      <td><span editable-text="Em_book.WZURL" e-name="WZURL" onbeforesave="checkName($data)" e-form="rowform">
+  {{Em_book.WZURL}}
+       </span>
+          </td>
+       <td>
+           <span editable-text="Em_book.FMURL" e-name="FMURL" onbeforesave="checkName($data)" e-form="rowform">
+             {{Em_book.FMURL}}
+               </span>
+</td>
+      <td>
+          <span editable-text="Em_book.CTime" e-name="CTime" onbeforesave="checkName($data)" e-form="rowform">
+            {{Em_book.CTime}}
+              </span>
+</td>
+      <td>
+          <span editable-text="Em_book.ReadPP" e-name="ReadPP" onbeforesave="checkName($data)" e-form="rowform">
+              {{Em_book.ReadPP}}
+              </span>
+</td>
+      <td>
+          <span  editable-text="Em_book.ClickPP" e-name="ClickPP" onbeforesave="checkName($data)" e-form="rowform">
+             {{Em_book.ClickPP}}
+              </span>
+</td>
+       <td>
+           <span editable-text="Em_book.Remarks" e-name="Remarks" onbeforesave="checkName($data)" e-form="rowform">
+   {{Em_book.Remarks}}
+               </span>
+</td>
+    <td>
+        <span editable-text="Em_book.IncreaseID" e-name="IncreaseID" onbeforesave="checkName($data)" e-form="rowform" >
+           {{Em_book.IncreaseID}}
+            </span>
+</td>
+
+    <td style="white-space: nowrap">
+        <!-- form -->
+        <form editable-form name="rowform"  onbeforesave="save($data, Em_book._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == Em_book">
+          <button type="submit" ng-disabled="rowform.$waiting"   class="btn btn-primary">
+            save
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            cancel
+          </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+          <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+          <button type="button" class="btn btn-danger" ng-click="remove(Em_book._id,$index)">del</button>
+        </div>  
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+    <button class="btn btn-default" ng-click="Add()">Add row</button>
+
+
+</body>
+</html>
